@@ -45,13 +45,10 @@ export const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-white p-6 space-y-6">
-
       {/* Header */}
       <div className="bg-slate-800 border border-slate-700 rounded-3xl p-8 shadow-xl flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-bold mb-2">
-            Student Dashboard 🎓
-          </h1>
+          <h1 className="text-4xl font-bold mb-2">Student Dashboard 🎓</h1>
 
           <p className="text-slate-400 text-lg">
             Welcome back! Keep learning and track your progress.
@@ -67,18 +64,13 @@ export const Dashboard = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-
         {/* Courses */}
         <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm">
-                Enrolled Courses
-              </p>
+              <p className="text-slate-400 text-sm">Enrolled Courses</p>
 
-              <h2 className="text-3xl font-bold mt-2">
-                12
-              </h2>
+              <h2 className="text-3xl font-bold mt-2">12</h2>
             </div>
 
             <div className="bg-blue-500/20 p-3 rounded-xl">
@@ -91,13 +83,9 @@ export const Dashboard = () => {
         <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm">
-                Learning Hours
-              </p>
+              <p className="text-slate-400 text-sm">Learning Hours</p>
 
-              <h2 className="text-3xl font-bold mt-2">
-                148h
-              </h2>
+              <h2 className="text-3xl font-bold mt-2">148h</h2>
             </div>
 
             <div className="bg-green-500/20 p-3 rounded-xl">
@@ -110,13 +98,9 @@ export const Dashboard = () => {
         <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm">
-                Total Test Given
-              </p>
+              <p className="text-slate-400 text-sm">Total Test Given</p>
 
-              <h2 className="text-3xl font-bold mt-2">
-                8
-              </h2>
+              <h2 className="text-3xl font-bold mt-2">8</h2>
             </div>
 
             <div className="bg-yellow-500/20 p-3 rounded-xl">
@@ -129,13 +113,9 @@ export const Dashboard = () => {
         <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg hover:scale-105 transition">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm">
-                Overall Progress
-              </p>
+              <p className="text-slate-400 text-sm">Overall Progress</p>
 
-              <h2 className="text-3xl font-bold mt-2">
-                78%
-              </h2>
+              <h2 className="text-3xl font-bold mt-2">78%</h2>
             </div>
 
             <div className="bg-pink-500/20 p-3 rounded-xl">
@@ -147,13 +127,10 @@ export const Dashboard = () => {
 
       {/* Main Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
         {/* My Courses */}
         <div className="lg:col-span-2 bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold">
-              My Courses 📚
-            </h2>
+            <h2 className="text-2xl font-semibold">My Courses 📚</h2>
 
             <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-sm transition">
               View All
@@ -162,14 +139,9 @@ export const Dashboard = () => {
 
           <div className="space-y-5">
             {courses.map((course, index) => (
-              <div
-                key={index}
-                className="bg-slate-700/40 p-5 rounded-2xl"
-              >
+              <div key={index} className="bg-slate-700/40 p-5 rounded-2xl">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-lg font-medium">
-                    {course.name}
-                  </h3>
+                  <h3 className="text-lg font-medium">{course.name}</h3>
 
                   <PlayCircle className="w-6 h-6 text-blue-400" />
                 </div>
@@ -191,9 +163,7 @@ export const Dashboard = () => {
 
         {/* Upcoming Exams */}
         <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6">
-            Upcoming Exams 📝
-          </h2>
+          <h2 className="text-2xl font-semibold mb-6">Upcoming Exams 📝</h2>
 
           <div className="space-y-4">
             {upcomingExams.map((exam, index) => (
@@ -202,9 +172,7 @@ export const Dashboard = () => {
                 className="bg-slate-700/40 p-4 rounded-xl hover:bg-slate-700/60 transition"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-lg">
-                    {exam.subject}
-                  </h3>
+                  <h3 className="font-semibold text-lg">{exam.subject}</h3>
 
                   <span className="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">
                     Upcoming
@@ -223,9 +191,7 @@ export const Dashboard = () => {
 
       {/* Learning Activity */}
       <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg">
-        <h2 className="text-2xl font-semibold mb-5">
-          Learning Activity 📈
-        </h2>
+        <h2 className="text-2xl font-semibold mb-5">Learning Activity 📈</h2>
 
         <div className="h-64 border-2 border-dashed border-slate-600 rounded-2xl flex items-center justify-center text-slate-400">
           Weekly Learning Chart / Analytics

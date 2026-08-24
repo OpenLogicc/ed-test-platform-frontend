@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   User,
   Lock,
@@ -15,115 +15,128 @@ import {
   ArrowRight,
   LogIn,
   CheckCircle2,
-  AlertCircle
-} from 'lucide-react';
+  AlertCircle,
+} from "lucide-react";
 
 export default function AuthPage() {
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  
+
   // UI State Management
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Login Form State
   const [loginData, setLoginData] = useState({
-    identifier: '',
-    password: ''
+    identifier: "",
+    password: "",
   });
 
   // Signup Form State
   const [signupData, setSignupData] = useState({
-    fullName: '',
-    email: '',
-    mobileNumber: '',
-    password: '',
-    targetGoal: '',
-    targetExamYear: ''
+    fullName: "",
+    email: "",
+    mobileNumber: "",
+    password: "",
+    targetGoal: "",
+    targetExamYear: "",
   });
 
-  const BASE_URL = 'http://localhost:8080/api/v1/auth';
+  const BASE_URL = "http://localhost:8080/api/v1/auth";
 
   // Input Change Handlers
-  const handleLoginChange = (e:any) => {
+  const handleLoginChange = (e: any) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const handleSignupChange = (e:any) => {
+  const handleSignupChange = (e: any) => {
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
   };
 
   // Toggle View Handler
   const toggleView = (toSignup: boolean) => {
     setIsSignup(toSignup);
-    setErrorMessage('');
-    setSuccessMessage('');
+    setErrorMessage("");
+    setSuccessMessage("");
   };
 
   // Login API Call
-  const handleLoginSubmit = async (e:any) => {
+  const handleLoginSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    setErrorMessage('');
-    setSuccessMessage('');
+    setErrorMessage("");
+    setSuccessMessage("");
 
     try {
       const response = await fetch(`${BASE_URL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(loginData)
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Login failed. Please check your credentials.');
+        throw new Error(
+          data.message || "Login failed. Please check your credentials.",
+        );
       }
 
       // Save token to localStorage
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify({ fullName: data.fullName, email: data.email }));
+      localStorage.setItem("token", data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ fullName: data.fullName, email: data.email }),
+      );
 
       setSuccessMessage(`Welcome back, ${data.fullName}!`);
       // Optional: Redirect user to home
-      window.location.href = '/home';
+      window.location.href = "/home";
     } catch (err) {
-      setErrorMessage(err instanceof Error ? err.message : 'Login failed. Please try again.');
+      setErrorMessage(
+        err instanceof Error ? err.message : "Login failed. Please try again.",
+      );
     } finally {
       setLoading(false);
     }
   };
 
   // Signup API Call
-  const handleSignupSubmit = async (e:any) => {
+  const handleSignupSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    setErrorMessage('');
-    setSuccessMessage('');
+    setErrorMessage("");
+    setSuccessMessage("");
 
     try {
       const response = await fetch(`${BASE_URL}/signup`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(signupData)
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(signupData),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Registration failed. Please try again.');
+        throw new Error(
+          data.message || "Registration failed. Please try again.",
+        );
       }
 
-      localStorage.setItem('token', data.token);
-      setSuccessMessage('Account created successfully!');
-      
+      localStorage.setItem("token", data.token);
+      setSuccessMessage("Account created successfully!");
+
       // Auto-switch to login after successful signup
       setTimeout(() => {
         toggleView(false);
       }, 2000);
     } catch (err) {
-      setErrorMessage(err instanceof Error ? err.message : 'Registration failed. Please try again.');
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : "Registration failed. Please try again.",
+      );
     } finally {
       setLoading(false);
     }
@@ -132,10 +145,8 @@ export default function AuthPage() {
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center p-3 sm:p-6 font-sans">
       <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-gray-100">
-        
         {/* ================= LEFT MARKETING PANEL ================= */}
         <div className="lg:w-[48%] bg-gradient-to-br from-[#FFF5EE] via-[#FFF0E6] to-[#FFE8DC] p-6 sm:p-10 flex flex-col justify-between relative overflow-hidden">
-          
           <div className="absolute top-0 right-0 w-80 h-80 bg-orange-200/40 rounded-full blur-3xl -z-0 pointer-events-none" />
 
           <div className="relative z-10">
@@ -158,24 +169,39 @@ export default function AuthPage() {
             {!isSignup ? (
               <>
                 <h1 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 leading-tight mb-4">
-                  Ace Your Exams With <span className="text-[#EA580C]">Top Mentors & Notes</span>
+                  Ace Your Exams With{" "}
+                  <span className="text-[#EA580C]">Top Mentors & Notes</span>
                 </h1>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                  Get 1-on-1 guidance from top rankers, access high-yield revision notes, and benchmark your score with full-length test series.
+                  Get 1-on-1 guidance from top rankers, access high-yield
+                  revision notes, and benchmark your score with full-length test
+                  series.
                 </p>
 
                 <div className="grid grid-cols-3 gap-3 mb-6">
                   <div className="bg-white/80 backdrop-blur-sm p-3 rounded-2xl text-center border border-white/60 shadow-sm">
-                    <span className="block text-xl font-extrabold text-[#EA580C]">10K+</span>
-                    <span className="text-[11px] text-slate-500 font-medium">Mentorship Sessions</span>
+                    <span className="block text-xl font-extrabold text-[#EA580C]">
+                      10K+
+                    </span>
+                    <span className="text-[11px] text-slate-500 font-medium">
+                      Mentorship Sessions
+                    </span>
                   </div>
                   <div className="bg-white/80 backdrop-blur-sm p-3 rounded-2xl text-center border border-white/60 shadow-sm">
-                    <span className="block text-xl font-extrabold text-[#EA580C]">50K+</span>
-                    <span className="text-[11px] text-slate-500 font-medium">Notes Downloaded</span>
+                    <span className="block text-xl font-extrabold text-[#EA580C]">
+                      50K+
+                    </span>
+                    <span className="text-[11px] text-slate-500 font-medium">
+                      Notes Downloaded
+                    </span>
                   </div>
                   <div className="bg-white/80 backdrop-blur-sm p-3 rounded-2xl text-center border border-white/60 shadow-sm">
-                    <span className="block text-xl font-extrabold text-[#EA580C]">200K+</span>
-                    <span className="text-[11px] text-slate-500 font-medium">Tests Taken</span>
+                    <span className="block text-xl font-extrabold text-[#EA580C]">
+                      200K+
+                    </span>
+                    <span className="text-[11px] text-slate-500 font-medium">
+                      Tests Taken
+                    </span>
                   </div>
                 </div>
 
@@ -184,29 +210,38 @@ export default function AuthPage() {
                     <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-[#EA580C] shrink-0">
                       <Users size={16} />
                     </div>
-                    <span className="text-xs font-semibold text-slate-700">1-on-1 Mentorship by Top Rankers & Experts</span>
+                    <span className="text-xs font-semibold text-slate-700">
+                      1-on-1 Mentorship by Top Rankers & Experts
+                    </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-[#EA580C] shrink-0">
                       <BookOpen size={16} />
                     </div>
-                    <span className="text-xs font-semibold text-slate-700">Curated Short Notes, Mind Maps & Formula Sheets</span>
+                    <span className="text-xs font-semibold text-slate-700">
+                      Curated Short Notes, Mind Maps & Formula Sheets
+                    </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-[#EA580C] shrink-0">
                       <Target size={16} />
                     </div>
-                    <span className="text-xs font-semibold text-slate-700">Exam-pattern Test Series with AIR Ranking & Insights</span>
+                    <span className="text-xs font-semibold text-slate-700">
+                      Exam-pattern Test Series with AIR Ranking & Insights
+                    </span>
                   </div>
                 </div>
               </>
             ) : (
               <>
                 <h1 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 leading-tight mb-4">
-                  Start Your Prep with <span className="text-[#EA580C]">Free Resources</span>
+                  Start Your Prep with{" "}
+                  <span className="text-[#EA580C]">Free Resources</span>
                 </h1>
                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
-                  Create your free account today to unlock sample revision notes, free mock tests, and a complimentary 15-minute mentorship call.
+                  Create your free account today to unlock sample revision
+                  notes, free mock tests, and a complimentary 15-minute
+                  mentorship call.
                 </p>
 
                 <div className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl border border-white/60 shadow-sm mb-6 space-y-2.5">
@@ -214,13 +249,16 @@ export default function AuthPage() {
                     What You Get On Joining
                   </span>
                   <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                    <CheckCircle2 size={14} className="text-emerald-500" /> Free Subject-wise PDF Notes
+                    <CheckCircle2 size={14} className="text-emerald-500" /> Free
+                    Subject-wise PDF Notes
                   </div>
                   <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                    <CheckCircle2 size={14} className="text-emerald-500" /> Access to 2 Free All-India Mock Tests
+                    <CheckCircle2 size={14} className="text-emerald-500" />{" "}
+                    Access to 2 Free All-India Mock Tests
                   </div>
                   <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                    <CheckCircle2 size={14} className="text-emerald-500" /> Direct Chat Access with Dedicated Mentor
+                    <CheckCircle2 size={14} className="text-emerald-500" />{" "}
+                    Direct Chat Access with Dedicated Mentor
                   </div>
                 </div>
               </>
@@ -228,18 +266,32 @@ export default function AuthPage() {
           </div>
 
           <div className="relative z-10 flex flex-wrap gap-3 pt-2">
-            <a href="#" className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl flex items-center gap-2.5 transition">
+            <a
+              href="#"
+              className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl flex items-center gap-2.5 transition"
+            >
               <span className="text-lg">▶</span>
               <div className="text-left">
-                <span className="block text-[9px] uppercase tracking-wider text-slate-400 font-semibold leading-tight">Get it on</span>
-                <span className="block text-xs font-bold leading-tight">Google Play</span>
+                <span className="block text-[9px] uppercase tracking-wider text-slate-400 font-semibold leading-tight">
+                  Get it on
+                </span>
+                <span className="block text-xs font-bold leading-tight">
+                  Google Play
+                </span>
               </div>
             </a>
-            <a href="#" className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl flex items-center gap-2.5 transition">
+            <a
+              href="#"
+              className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl flex items-center gap-2.5 transition"
+            >
               <span className="text-lg"></span>
               <div className="text-left">
-                <span className="block text-[9px] uppercase tracking-wider text-slate-400 font-semibold leading-tight">Download on</span>
-                <span className="block text-xs font-bold leading-tight">App Store</span>
+                <span className="block text-[9px] uppercase tracking-wider text-slate-400 font-semibold leading-tight">
+                  Download on
+                </span>
+                <span className="block text-xs font-bold leading-tight">
+                  App Store
+                </span>
               </div>
             </a>
           </div>
@@ -247,7 +299,6 @@ export default function AuthPage() {
 
         {/* ================= RIGHT FORM PANEL ================= */}
         <div className="lg:w-[52%] p-6 sm:p-12 flex flex-col justify-center bg-white">
-          
           {/* Feedback Alerts */}
           {errorMessage && (
             <div className="max-w-md w-full mx-auto mb-4 p-3 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
@@ -306,7 +357,7 @@ export default function AuthPage() {
                       <Lock size={16} />
                     </div>
                     <input
-                      type={showPassword ? 'text' : 'password'}
+                      type={showPassword ? "text" : "password"}
                       name="password"
                       value={loginData.password}
                       onChange={handleLoginChange}
@@ -323,7 +374,10 @@ export default function AuthPage() {
                     </button>
                   </div>
                   <div className="text-right mt-1.5">
-                    <a href="#" className="text-[11px] font-bold text-[#EA580C] hover:underline">
+                    <a
+                      href="#"
+                      className="text-[11px] font-bold text-[#EA580C] hover:underline"
+                    >
                       Forgot Password?
                     </a>
                   </div>
@@ -335,7 +389,7 @@ export default function AuthPage() {
                   className="w-full bg-[#0F172A] hover:bg-slate-800 disabled:bg-slate-400 text-white font-bold py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 transition shadow-lg shadow-slate-900/10 mt-2"
                 >
                   <LogIn size={15} />
-                  {loading ? 'Signing In...' : 'Sign In'}
+                  {loading ? "Signing In..." : "Sign In"}
                 </button>
               </form>
 
@@ -350,7 +404,6 @@ export default function AuthPage() {
               </div>
             </div>
           ) : (
-            
             /* SIGNUP VIEW */
             <div className="max-w-md w-full mx-auto">
               <span className="text-[11px] font-bold tracking-widest text-[#EA580C] uppercase block mb-1">
@@ -433,7 +486,7 @@ export default function AuthPage() {
                       <Lock size={16} />
                     </div>
                     <input
-                      type={showPassword ? 'text' : 'password'}
+                      type={showPassword ? "text" : "password"}
                       name="password"
                       value={signupData.password}
                       onChange={handleSignupChange}
@@ -511,12 +564,14 @@ export default function AuthPage() {
                   disabled={loading}
                   className="w-full bg-[#0F172A] hover:bg-slate-800 disabled:bg-slate-400 text-white font-bold py-3 rounded-2xl text-xs transition shadow-lg shadow-slate-900/10 mt-2"
                 >
-                  {loading ? 'Creating Account...' : 'Create Free Account'}
+                  {loading ? "Creating Account..." : "Create Free Account"}
                 </button>
               </form>
 
               <div className="mt-5 text-center">
-                <span className="text-xs text-slate-500">Already registered? </span>
+                <span className="text-xs text-slate-500">
+                  Already registered?{" "}
+                </span>
                 <button
                   onClick={() => toggleView(false)}
                   className="text-xs font-bold text-[#EA580C] hover:underline inline-flex items-center gap-1"
@@ -526,7 +581,6 @@ export default function AuthPage() {
               </div>
             </div>
           )}
-
         </div>
       </div>
     </div>

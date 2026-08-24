@@ -1,53 +1,54 @@
-import React from 'react'
-import { SideBar } from '../components/sideBar/SideBar'
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { SideBar } from "../components/sideBar/SideBar";
+import { useNavigate } from "react-router-dom";
+import AgGridTable from "../components/ag-Grid/AgGridTable";
 
 export const AdminPage = () => {
     const navigate = useNavigate();
-    
+
     const stats = [
-        { title: 'Total Students', value: '2,340' },
-        { title: 'Active Mentorships', value: '186' },
-        { title: 'Tests Conducted', value: '94' },
-        { title: 'Revenue', value: '₹4.8L' },
+        { title: "Total Students", value: "2,340" },
+        { title: "Active Mentorships", value: "186" },
+        { title: "Tests Conducted", value: "94" },
+        { title: "Revenue", value: "₹4.8L" },
     ];
 
     const students = [
         {
-            name: 'Aarav Sharma',
-            course: 'JEE Advanced',
-            mentor: 'Physics Mentor',
-            progress: '82%',
+            name: "Aarav Sharma",
+            course: "JEE Advanced",
+            mentor: "Physics Mentor",
+            progress: "82%",
         },
         {
-            name: 'Fatima Khan',
-            course: 'NEET',
-            mentor: 'Biology Mentor',
-            progress: '76%',
+            name: "Fatima Khan",
+            course: "NEET",
+            mentor: "Biology Mentor",
+            progress: "76%",
         },
         {
-            name: 'Rohan Verma',
-            course: 'JEE Main',
-            mentor: 'Math Mentor',
-            progress: '91%',
+            name: "Rohan Verma",
+            course: "JEE Main",
+            mentor: "Math Mentor",
+            progress: "91%",
         },
     ];
 
     const upcomingTests = [
         {
-            title: 'NEET Full Mock Test',
-            date: '28 May 2026',
-            students: '520 Students',
+            title: "NEET Full Mock Test",
+            date: "28 May 2026",
+            students: "520 Students",
         },
         {
-            title: 'JEE Physics Marathon',
-            date: '30 May 2026',
-            students: '410 Students',
+            title: "JEE Physics Marathon",
+            date: "30 May 2026",
+            students: "410 Students",
         },
         {
-            title: 'Chemistry Weekly Quiz',
-            date: '1 June 2026',
-            students: '220 Students',
+            title: "Chemistry Weekly Quiz",
+            date: "1 June 2026",
+            students: "220 Students",
         },
     ];
 
@@ -55,6 +56,7 @@ export const AdminPage = () => {
         <div className="min-h-screen bg-slate-950 text-white">
             {/* <SideBar /> */}
             <div className="p-6">
+                {/* Header */}
                 <div className="flex items-center justify-between mb-8">
                     <div>
                         <h1 className="text-4xl font-bold">EdTech Admin Dashboard</h1>
@@ -71,6 +73,7 @@ export const AdminPage = () => {
                     </button>
                 </div>
 
+                {/* Stats Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
                     {stats.map((item, index) => (
                         <div
@@ -83,45 +86,12 @@ export const AdminPage = () => {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                    <div className="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl">
-                        <div className="flex justify-between items-center mb-5">
-                            <h2 className="text-2xl font-semibold">Student Progress</h2>
-                            <button className="text-orange-400">View All</button>
-                        </div>
-
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left">
-                                <thead>
-                                    <tr className="text-slate-400 border-b border-slate-800">
-                                        <th className="pb-3">Student</th>
-                                        <th className="pb-3">Course</th>
-                                        <th className="pb-3">Mentor</th>
-                                        <th className="pb-3">Progress</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    {students.map((student, index) => (
-                                        <tr
-                                            key={index}
-                                            className="border-b border-slate-800 hover:bg-slate-800 transition"
-                                        >
-                                            <td className="py-4">{student.name}</td>
-                                            <td>{student.course}</td>
-                                            <td>{student.mentor}</td>
-                                            <td>
-                                                <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">
-                                                    {student.progress}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                {/* AgGridTable Section - Fixed width & height */}
+                {/* AgGridTable Section utilizing your custom classes */}
+                <div className="mb-8 grid w-full grid-cols-1 gap-6 lg:grid-cols-4">
+                    <div className="h-[650px] w-full min-w-0 rounded-3xl border border-slate-800 bg-slate-900 p-3 shadow-xl lg:col-span-3">
+                        <AgGridTable />
                     </div>
-
                     <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl">
                         <div className="flex justify-between items-center mb-5">
                             <h2 className="text-2xl font-semibold">Upcoming Tests</h2>
@@ -143,6 +113,9 @@ export const AdminPage = () => {
                     </div>
                 </div>
 
+                
+
+                {/* Mentorship & Actions Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl">
                         <h2 className="text-2xl font-semibold mb-5">Mentorship Features</h2>
@@ -202,5 +175,5 @@ export const AdminPage = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

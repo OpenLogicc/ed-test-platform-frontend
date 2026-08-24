@@ -89,7 +89,7 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
   ];
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const target = e.target as HTMLInputElement;
     const { name, value, files } = target;
@@ -110,38 +110,26 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
 
   return (
     <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50 p-5">
-
       <div className="bg-slate-900 w-full max-w-4xl rounded-3xl p-8 border border-slate-700 overflow-y-auto max-h-[95vh]">
-
         {/* Header */}
 
         <div className="flex justify-between items-center">
-
           <div>
-
-            <h2 className="text-3xl font-bold text-white">
-              Book Session
-            </h2>
+            <h2 className="text-3xl font-bold text-white">Book Session</h2>
 
             <p className="text-slate-400 mt-2">
               Mentor: <span className="text-blue-400">{mentor?.name}</span>
             </p>
-
           </div>
 
-          <button
-            onClick={onClose}
-            className="text-slate-400 hover:text-white"
-          >
+          <button onClick={onClose} className="text-slate-400 hover:text-white">
             <X size={28} />
           </button>
-
         </div>
 
         {/* Date */}
 
         <div className="mt-8">
-
           <label className="text-white flex items-center gap-2 mb-2">
             <Calendar size={18} />
             Select Date
@@ -154,20 +142,17 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
             onChange={handleChange}
             className="w-full bg-slate-800 rounded-xl p-3 border border-slate-700"
           />
-
         </div>
 
         {/* Time Slots */}
 
         <div className="mt-8">
-
           <label className="flex items-center gap-2 mb-4">
             <Clock size={18} />
             Available Time Slots
           </label>
 
           <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-
             {availableSlots.map((slot) => (
               <button
                 key={slot}
@@ -187,18 +172,13 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
                 {slot}
               </button>
             ))}
-
           </div>
-
         </div>
 
         {/* Duration */}
 
         <div className="mt-8">
-
-          <label className="block mb-2">
-            Session Duration
-          </label>
+          <label className="block mb-2">Session Duration</label>
 
           <select
             name="duration"
@@ -211,13 +191,11 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
             <option>45</option>
             <option>60</option>
           </select>
-
         </div>
 
         {/* Meeting Type */}
 
         <div className="mt-8">
-
           <label className="flex items-center gap-2 mb-2">
             <Video size={18} />
             Meeting Platform
@@ -231,16 +209,12 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
           >
             <option>Google Meet</option>
           </select>
-
         </div>
 
         {/* Topic */}
 
         <div className="mt-8">
-
-          <label className="block mb-2">
-            Topic
-          </label>
+          <label className="block mb-2">Topic</label>
 
           <select
             name="topic"
@@ -251,22 +225,15 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
             <option value="">Select Topic</option>
 
             {topics.map((topic) => (
-              <option key={topic}>
-                {topic}
-              </option>
+              <option key={topic}>{topic}</option>
             ))}
-
           </select>
-
         </div>
 
         {/* Question */}
 
         <div className="mt-8">
-
-          <label className="block mb-2">
-            What would you like to ask?
-          </label>
+          <label className="block mb-2">What would you like to ask?</label>
 
           <textarea
             rows={5}
@@ -276,15 +243,12 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
             placeholder="Describe your doubts..."
             className="w-full bg-slate-800 rounded-xl p-4 border border-slate-700"
           />
-
         </div>
 
         {/* Language */}
 
         <div className="mt-8">
-          <label className="block mb-2">
-            Preferred Language
-          </label>
+          <label className="block mb-2">Preferred Language</label>
 
           <select
             name="language"
@@ -337,9 +301,7 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
         {/* Additional Notes */}
 
         <div className="mt-8">
-          <label className="block mb-2">
-            Additional Notes
-          </label>
+          <label className="block mb-2">Additional Notes</label>
 
           <textarea
             rows={4}
@@ -354,18 +316,12 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
         {/* Booking Summary */}
 
         <div className="mt-10 bg-slate-800 rounded-2xl p-6 border border-slate-700">
-
-          <h3 className="text-xl font-bold mb-4">
-            Booking Summary
-          </h3>
+          <h3 className="text-xl font-bold mb-4">Booking Summary</h3>
 
           <div className="space-y-3 text-slate-300">
-
             <div className="flex justify-between">
               <span>Mentor</span>
-              <span className="font-semibold text-white">
-                {mentor?.name}
-              </span>
+              <span className="font-semibold text-white">{mentor?.name}</span>
             </div>
 
             <div className="flex justify-between">
@@ -392,15 +348,12 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
               <span>Topic</span>
               <span>{formData.topic || "-"}</span>
             </div>
-
           </div>
-
         </div>
 
         {/* Buttons */}
 
         <div className="flex gap-4 mt-10">
-
           <button
             onClick={onClose}
             className="flex-1 py-4 rounded-xl bg-slate-700 hover:bg-slate-600 transition"
@@ -414,11 +367,8 @@ const BookingModal = ({ mentor, onClose }: BookingModalProps) => {
           >
             Confirm Booking
           </button>
-
         </div>
-
       </div>
-
     </div>
   );
 };
