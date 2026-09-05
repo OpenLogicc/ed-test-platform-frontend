@@ -75,7 +75,7 @@ export const SideBarAdmin: React.FC<SideBarProps> = ({
                 onClick={() => handleClick("mentors")}
                 className="w-full text-left flex items-center p-3 text-slate-300 rounded-2xl hover:bg-purple-500 hover:text-white transition-all duration-300"
               >
-              <span className="ml-3">Mentors</span>
+                <span className="ml-3">Mentors</span>
               </button>
             </li>
             {/* Created Test */}

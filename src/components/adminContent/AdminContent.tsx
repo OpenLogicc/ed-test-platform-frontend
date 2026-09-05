@@ -15,7 +15,7 @@ export const AdminContent: React.FC<AdminContentProps> = ({ section }) => {
       case "createdTests":
         return (
           <div className="bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-700">
-           <CreatedTest />
+            <CreatedTest />
           </div>
         );
       case "mentors":
