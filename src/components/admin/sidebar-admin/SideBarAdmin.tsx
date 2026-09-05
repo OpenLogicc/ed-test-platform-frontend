@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Mentors from "../mentors/Mentors";
 
 interface SideBarProps {
   onLinkClick?: (section: string) => void;
@@ -66,6 +67,15 @@ export const SideBarAdmin: React.FC<SideBarProps> = ({
                 className="w-full text-left flex items-center p-3 text-slate-300 rounded-2xl hover:bg-purple-500 hover:text-white transition-all duration-300"
               >
                 <span className="ml-3">Students</span>
+              </button>
+            </li>
+            {/* Mentors */}
+            <li>
+              <button
+                onClick={() => handleClick("mentors")}
+                className="w-full text-left flex items-center p-3 text-slate-300 rounded-2xl hover:bg-purple-500 hover:text-white transition-all duration-300"
+              >
+              <span className="ml-3">Mentors</span>
               </button>
             </li>
             {/* Created Test */}

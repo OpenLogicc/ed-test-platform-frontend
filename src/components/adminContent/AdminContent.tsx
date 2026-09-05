@@ -1,6 +1,7 @@
 import React from "react";
 import { AdminHome } from "../admin/adminHome/AdminHome";
 import CreatedTest from "../admin/createdTest/CreatedTest";
+import Mentors from "../admin/mentors/Mentors";
 
 interface AdminContentProps {
   section: string;
@@ -17,6 +18,8 @@ export const AdminContent: React.FC<AdminContentProps> = ({ section }) => {
            <CreatedTest />
           </div>
         );
+      case "mentors":
+        return <Mentors />;
       case "payments":
         return (
           <div className="bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-700">
