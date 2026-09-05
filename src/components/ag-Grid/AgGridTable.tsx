@@ -163,7 +163,7 @@ const AgGridTable = () => {
             <button
               onClick={onBtExport}
 
-              className="m-3 inline-flex items-center rounded-xl bg-purple-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-purple-500/20 transition hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-slate-900 active:scale-95"
+              className="m-3 inline-flex items-center rounded-xl bg-purple-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-purple-500/20 transition hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-slate-900 active:scale-95"
             >
               Export to Excel
             </button>

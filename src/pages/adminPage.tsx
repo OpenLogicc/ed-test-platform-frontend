@@ -17,7 +17,7 @@ export const AdminPage = () => {
       />
       <div
         className={`
-                    p-2 mt-20 bg-slate-900 min-h-screen text-white
+                    mt-18 bg-slate-950 min-h-screen text-white
                     transition-all duration-300
                     ${isSidebarOpen ? "sm:ml-64" : "ml-0"}
                 `}

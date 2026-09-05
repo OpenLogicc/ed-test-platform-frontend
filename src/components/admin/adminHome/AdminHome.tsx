@@ -63,7 +63,7 @@ export const AdminHome = () => {
 
         <button
           onClick={() => navigate("/admin/create-test")}
-          className="bg-purple-500 hover:bg-purple-600 transition px-5 py-3 rounded-2xl font-semibold shadow-lg"
+          className="bg-purple-600 hover:bg-purple-500 transition px-5 py-3 rounded-2xl font-semibold shadow-lg"
         >
           + Create New Test
         </button>
