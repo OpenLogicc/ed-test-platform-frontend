@@ -34,7 +34,7 @@ interface TestDataType {
   questions: QuestionItem[];
 }
 
-export const CreateTest: FC = () => {
+export const NewTest: FC = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
 
@@ -71,7 +71,7 @@ export const CreateTest: FC = () => {
   });
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setTestData({
       ...testData,
@@ -110,7 +110,7 @@ export const CreateTest: FC = () => {
   const updateQuestionField = (
     qIndex: number,
     field: keyof QuestionItem,
-    value: string
+    value: string,
   ) => {
     setTestData((prev) => {
       const updated = [...prev.questions];
@@ -139,7 +139,7 @@ export const CreateTest: FC = () => {
     setTestData((prev) => {
       const updated = [...prev.questions];
       updated[qIndex].options = updated[qIndex].options.filter(
-        (_, idx) => idx !== optIndex
+        (_, idx) => idx !== optIndex,
       );
       return { ...prev, questions: updated };
     });
@@ -156,7 +156,7 @@ export const CreateTest: FC = () => {
   const updateOptionCorrectness = (
     qIndex: number,
     optIndex: number,
-    isCorrect: boolean
+    isCorrect: boolean,
   ) => {
     setTestData((prev) => {
       const updated = [...prev.questions];
@@ -359,7 +359,11 @@ export const CreateTest: FC = () => {
                       rows={4}
                       value={q.description}
                       onChange={(e) =>
-                        updateQuestionField(qIndex, "description", e.target.value)
+                        updateQuestionField(
+                          qIndex,
+                          "description",
+                          e.target.value,
+                        )
                       }
                       placeholder="Enter the question"
                       className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3.5 text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-purple-500 text-sm"
@@ -375,7 +379,11 @@ export const CreateTest: FC = () => {
                       <select
                         value={q.difficulty}
                         onChange={(e) =>
-                          updateQuestionField(qIndex, "difficulty", e.target.value)
+                          updateQuestionField(
+                            qIndex,
+                            "difficulty",
+                            e.target.value,
+                          )
                         }
                         className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white outline-none focus:ring-2 focus:ring-purple-500 text-sm"
                       >
@@ -429,7 +437,11 @@ export const CreateTest: FC = () => {
                       type="text"
                       value={q.questionType}
                       onChange={(e) =>
-                        updateQuestionField(qIndex, "questionType", e.target.value)
+                        updateQuestionField(
+                          qIndex,
+                          "questionType",
+                          e.target.value,
+                        )
                       }
                       placeholder="SCQ"
                       className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white outline-none focus:ring-2 focus:ring-purple-500 text-sm"
@@ -438,7 +450,9 @@ export const CreateTest: FC = () => {
 
                   {/* Options */}
                   <div className="space-y-4 pt-2">
-                    <h4 className="text-lg font-semibold text-white">Options</h4>
+                    <h4 className="text-lg font-semibold text-white">
+                      Options
+                    </h4>
 
                     <div className="space-y-3">
                       {q.options.map((opt, optIndex) => (
@@ -454,7 +468,11 @@ export const CreateTest: FC = () => {
                               type="text"
                               value={opt.text}
                               onChange={(e) =>
-                                updateOptionText(qIndex, optIndex, e.target.value)
+                                updateOptionText(
+                                  qIndex,
+                                  optIndex,
+                                  e.target.value,
+                                )
                               }
                               placeholder="Enter option text"
                               className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-purple-500 text-sm"
@@ -471,7 +489,7 @@ export const CreateTest: FC = () => {
                                 updateOptionCorrectness(
                                   qIndex,
                                   optIndex,
-                                  e.target.value === "YES"
+                                  e.target.value === "YES",
                                 )
                               }
                               className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white outline-none focus:ring-2 focus:ring-purple-500 text-sm"

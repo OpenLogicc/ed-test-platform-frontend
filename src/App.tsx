@@ -4,7 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { AdminPage } from "./pages/adminPage";
 import { Home } from "./pages/Home";
 import { TestPage } from "./components/testSeries/TestPage";
-import { CreateTest } from "./components/admin-createTest/CreateTest";
+import { NewTest } from "./components/admin/newTest/NewTest";
 import MyTests from "./components/my-tests/MyTests";
 import { TestSeries } from "./components/testSeries/TestSeries";
 import Login from "./components/login/Login";
@@ -17,7 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/admin/create-test" element={<CreateTest />} />
+        <Route path="/admin/create-test" element={<NewTest />} />
         <Route path="/test/:id" element={<MyTests />} />
         {/* <Route path="/test/:id" element={<TestPage />} /> */}
       </Routes>

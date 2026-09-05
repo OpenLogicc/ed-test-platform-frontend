@@ -159,7 +159,7 @@ const AgGridTable = () => {
             <h2 className="text-2xl font-semibold tracking-tight text-white">
               Student Details
             </h2>
-  
+
             <button
               onClick={onBtExport}
 
