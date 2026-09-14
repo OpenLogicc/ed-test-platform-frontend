@@ -150,7 +150,6 @@ export const Payments: React.FC = () => {
       if (!res.ok) {
         throw new Error("Failed to create order on server");
       }
-
       const orderData: OrderApiResponse = await res.json();
 
       // 2. Configure modal options
