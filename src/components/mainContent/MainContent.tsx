@@ -4,6 +4,7 @@ import { Payments } from "../payments/Payments";
 import { Dashboard } from "../dashBoard/DashBoard";
 import { Mentorships } from "../mentorships/Mentorships";
 import MyTests from "../my-tests/MyTests";
+import { SubjectDetails } from "../chapterTests/SubjectDetails";
 
 interface MainContentProps {
   section: string;
@@ -48,6 +49,8 @@ export const MainContent: React.FC<MainContentProps> = ({ section }) => {
             </div>
           </div>
         );
+      case "chapter-tests":
+        return <SubjectDetails />;
       case "analytics":
         return (
           <div className="bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-700">

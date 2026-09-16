@@ -137,14 +137,16 @@ export const Payments: React.FC = () => {
 
       const isLoaded = await loadRazorpayScript();
       if (!isLoaded) {
-        alert("Razorpay SDK failed to load. Please check your network connection.");
+        alert(
+          "Razorpay SDK failed to load. Please check your network connection.",
+        );
         return;
       }
 
       // 1. Call Spring Boot to generate order
       const res = await fetch(
         `http://localhost:8080/api/payments/create-order?amount=${plan.price}&currency=INR`,
-        { method: "POST" }
+        { method: "POST" },
       );
 
       if (!res.ok) {
@@ -163,17 +165,21 @@ export const Payments: React.FC = () => {
         handler: async (response: RazorpaySuccessResponse) => {
           try {
             // 3. Verify signature on backend
-            const verifyRes = await fetch("http://localhost:8080/api/payments/verify-payment", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-              }),
-            });
+            const verifyRes = await fetch(
+              "http://localhost:8080/api/payments/verify-payment",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature,
+                }),
+              },
+            );
 
-            const verifyResult: VerificationApiResponse = await verifyRes.json();
+            const verifyResult: VerificationApiResponse =
+              await verifyRes.json();
             if (verifyResult.success) {
               alert(`Payment successful for ${plan.name}! Course unlocked.`);
               // e.g., window.location.href = "/dashboard";
@@ -224,11 +230,15 @@ export const Payments: React.FC = () => {
             )}
 
             <div>
-              <h2 className={`text-2xl font-bold mb-2 ${plan.popular ? "mt-3" : ""}`}>
+              <h2
+                className={`text-2xl font-bold mb-2 ${plan.popular ? "mt-3" : ""}`}
+              >
                 {plan.name}
               </h2>
 
-              <p className={`mb-6 ${plan.popular ? "text-slate-200" : "text-slate-400"}`}>
+              <p
+                className={`mb-6 ${plan.popular ? "text-slate-200" : "text-slate-400"}`}
+              >
                 {plan.description}
               </p>
 
@@ -238,7 +248,9 @@ export const Payments: React.FC = () => {
                 </span>
               </div>
 
-              <ul className={`space-y-4 mb-8 ${plan.popular ? "text-slate-100" : "text-slate-300"}`}>
+              <ul
+                className={`space-y-4 mb-8 ${plan.popular ? "text-slate-100" : "text-slate-300"}`}
+              >
                 {plan.features.map((feat, idx) => (
                   <li key={idx}>
                     {feat.included ? "✅" : "❌"} {feat.text}

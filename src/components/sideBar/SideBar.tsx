@@ -99,6 +99,16 @@ export const SideBar: React.FC<SideBarProps> = ({
               </button>
             </li>
 
+            {/* Chapter Tests */}
+            <li>
+              <button
+                onClick={() => handleClick("chapter-tests")}
+                className="w-full text-left flex items-center p-3 text-slate-300 rounded-2xl hover:bg-purple-500 hover:text-white transition-all duration-300"
+              >
+                <span className="ml-3">Chapter Tests</span>
+              </button>
+            </li>
+
             {/* Inbox */}
             <li>
               <button
