@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface SideBarProps {
   onLinkClick?: (section: string) => void;
@@ -149,6 +150,16 @@ export const SideBar: React.FC<SideBarProps> = ({
                 className="w-full text-left flex items-center p-3 text-slate-300 rounded-2xl hover:bg-purple-500 hover:text-white transition-all duration-300"
               >
                 <span className="ml-3">Settings</span>
+              </button>
+            </li>
+
+            {/* Logout */}
+            <li>
+              <button
+                onClick={() => handleClick("logout")}
+                className="w-full text-left flex items-center p-3 text-slate-300 rounded-2xl hover:bg-purple-500 hover:text-white transition-all duration-300"
+              >
+                <span className="ml-3">Logout</span>
               </button>
             </li>
           </ul>

@@ -5,12 +5,14 @@ import { Dashboard } from "../dashBoard/DashBoard";
 import { Mentorships } from "../mentorships/Mentorships";
 import MyTests from "../my-tests/MyTests";
 import { SubjectDetails } from "../chapterTests/SubjectDetails";
+import { LogOut } from "lucide-react";
+import { Logout } from "../login/Logout";
 
 interface MainContentProps {
   section: string;
 }
 
-export const MainContent: React.FC<MainContentProps> = ({ section }) => {
+export const MainContent = ({ section }: MainContentProps) => {
   const renderContent = () => {
     switch (section) {
       case "dashboard":
@@ -79,6 +81,8 @@ export const MainContent: React.FC<MainContentProps> = ({ section }) => {
             </p>
           </div>
         );
+      case "logout":
+        return <Logout />;
       default:
         return <Dashboard />;
     }
